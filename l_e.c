@@ -12,6 +12,7 @@ IntElement *create_IE(int a);//creates an element
 void push_IE(IntElement *last, IntElement *new);// links new element to the end of the list
 IntElement *create_list(int a);//creates a list of a-elements and returns a pointer to the last element
 int capacity (IntElement *ptr);//returns number of elements in the list
+IntElement *pop(IntElement *list, int a);
 
 
 int main(){  
@@ -69,5 +70,17 @@ int capacity (IntElement *ptr){
     }
     
     return number;
+}
+
+IntElement *pop(IntElement *list, int a){
+    IntElement *found = list;
+    while(found != NULL){
+        if(found->data == a){
+            return found;
+        }
+        found = found->next;
+    }
+    return found;
+
 }
 
