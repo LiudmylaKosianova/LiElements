@@ -9,25 +9,26 @@ typedef struct IntElement{
 } IntElement;
 
 IntElement *create_IE(int a);//creates an element 
-void push_IE(IntElement *last, IntElement *new);// links new element to end of the list
+void push_IE(IntElement *last, IntElement *new);// links new element to the end of the list
 IntElement *create_list(int a);//creates a list of a-elements and returns a pointer to the last element
-int capacity (IntElement *ptr);
+int capacity (IntElement *ptr);//returns number of elements in the list
+
 
 int main(){  
 
     IntElement *list_5 = create_list(5);
-    printf("list_5 %p\n", list_5);
+
+    IntElement *ptrCount = list_5;
     int count = 0;
-    while(list_5 != NULL){
+    while(ptrCount != NULL){
         count++;
-        list_5 = list_5->previous;
+        ptrCount = ptrCount->previous;
     }
 
     int c = capacity(list_5);
     printf("count %d\n", count);
     printf("capacity %d\n", c);
-
-
+    
     
     return 0;
 }
@@ -59,13 +60,14 @@ IntElement *create_list(int a){
 }
 
 int capacity (IntElement *ptr){
-    IntElement *ptrA = ptr;
-    printf("ptr argument capacity %p\n", ptr);
     int number = 0;
-    while(ptrA != NULL){
-        number++;         
-        ptrA = ptrA->previous;
+    IntElement *ptrCount = ptr;
+    
+    while(ptrCount != NULL){
+        number++;
+        ptrCount = ptrCount->previous;
     }
+    
     return number;
 }
 
