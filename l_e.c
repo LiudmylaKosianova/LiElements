@@ -13,10 +13,11 @@ IntElement *create_IE(int a);//creates an element
 void push_IE(IntElement *last, IntElement *new);// links new element to the end of the list
 IntElement *create_list(int a);//creates a list of a-elements and returns a pointer to the last element
 int capacity (IntElement *ptr);//returns number of elements in the list
-int capacity2(IntElement *ptr);//returns number of elements fin the list
+int capacity2(IntElement *ptr);//returns number of elements in the list
 IntElement *pop(IntElement *list, int a);//returns the pointer to the closest element with a-data
 void set_IE(IntElement *list, int index, int a); //sets the data (a) of the element at index (index)
 IntElement *resize (IntElement *ptr, int a); //changes the list size, returns the pointer to the new end of the list
+IntElement *delete (IntElement *ptr); //deletes the last element, returns the pointer to the new last element
 
 
 int main(){  
@@ -24,10 +25,10 @@ int main(){
     IntElement *list_5 = create_list(5);
     set_IE(list_5,3,99); 
     printf("capacity %d\n", capacity(list_5)); 
-    list_5 = resize(list_5, 3);
-    
+    list_5 = resize(list_5, 3);   
     printf("new capacity %d\n", capacity(list_5));
-
+    list_5 = delete(list_5);
+    printf("new capacity %d\n", capacity(list_5));
         
     
     IntElement *ptr1 = list_5;
@@ -144,5 +145,9 @@ IntElement *resize (IntElement *ptr, int a){
     return ptr;
 }
 
-
+IntElement *delete (IntElement *ptr){
+    ptr = ptr->previous;
+    ptr->next = NULL;
+    return ptr;
+}
 
